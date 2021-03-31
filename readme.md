@@ -2,7 +2,7 @@
 
 OpenVRドライバ作成例である。比較的シンプルな構成を目指した。
 
-で作成したものである。
+[オリジナルトラッカーを作ろう~vol.1 OpenVRドライバ編~](https://link)で作成したものである。
 
 ## 動作
 
@@ -19,7 +19,7 @@ OpenVRドライバ作成例である。比較的シンプルな構成を目指�
 |OS|Windows10 64bit|
 |IDE|VisualStudio 2017 v141|
 
-VisualStudio に Microsoft Child Process Debugging Power Toolを
+VisualStudio に Microsoft Child Process Debugging Power Toolを導入している。
 
 ## ファイル構成
 
@@ -40,6 +40,7 @@ VisualStudio に Microsoft Child Process Debugging Power Toolを
 1. OpenVR SDK(1.16.8)をダウンロードし、中身をopenvr-1.16.8の中に入れる
 1. `SimpleTrackerDriverTest\_driver_set.bat`を編集し、`set vrpathreg=`を正しく設定する
 1. `SimpleTrackerDriverTest\_driver_en.bat`を実行し、ドライバを登録する。
+1. SimpleTrackerDriverTestのプロジェクトのプロパティから デバッグのコマンドを正しく設定する。
 
 ## 動かす
 

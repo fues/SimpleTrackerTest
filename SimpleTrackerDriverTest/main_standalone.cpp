@@ -37,6 +37,7 @@ private:
 	//毎フレーム加算される。
 	int m_nFrametime;
 	static const int s_nLoopFrame = 160;//何フレームでループさせるか;
+	bool m_bDispMatrix = false;//各デバイスの姿勢行列をログに表示か
 	//デバイスの座標系を決めるコントローラー
 	ETrackedControllerRole m_nRefControllerRole;
 	uint32_t m_nRefControllerIndex;
@@ -104,21 +105,16 @@ public:
 
 	DriverPose_t GetPose() override {
 		DriverPose_t pose = { 0 };
-		bool dispMatrix = false;//各デバイスの姿勢行列をログに表示
 		pose.result = TrackingResult_Running_OK;
 		pose.shouldApplyHeadModel = false;
 		pose.poseIsValid = true;
 		pose.deviceIsConnected = true;
 
-		m_nFrametime++;
-		if (m_nFrametime >= s_nLoopFrame) {
-			m_nFrametime = 0;
-			dispMatrix = true;
-		}
 
 		TrackedDevicePose_t poses[k_unMaxTrackedDeviceCount];
 		VRServerDriverHost()->GetRawTrackedDevicePoses(0, poses, k_unMaxTrackedDeviceCount);//すべてのデバイスのポーズの配列を得る
-		if (dispMatrix) {
+		if (m_bDispMatrix) {
+			m_bDispMatrix = false;
 			for (auto i = 0; i < k_unMaxTrackedDeviceCount; i++) {
 				if (!poses[i].bDeviceIsConnected) {
 					break;
@@ -167,6 +163,11 @@ public:
 
 	void RunFrame()
 	{
+		m_nFrametime++;
+		if (m_nFrametime >= s_nLoopFrame) {
+			m_nFrametime = 0;
+			m_bDispMatrix = true;//1周期回った瞬間のフレームだけ行列表示
+		}
 		if (m_unDeviceIndex != k_unTrackedDeviceIndexInvalid)//デバイスがActivateされているなら
 		{
 			VRServerDriverHost()->TrackedDevicePoseUpdated(m_unDeviceIndex, GetPose(), sizeof(DriverPose_t));
