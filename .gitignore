@@ -1,0 +1,9 @@
+*x64/
+*.vs/
+*bin/
+
+*.[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].png
+*fusion360_exports/
+
+openvr-1.16.8/*
+!openvr-1.16.8/.gitkeep

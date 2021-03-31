@@ -1,0 +1,8 @@
+{
+   "driver_SimpleTrackerDriverTest" : {
+      "test_bool" : true,
+      "test_int" : 987,
+      "test_float" : 0.1234,
+      "test_string" : "default settings"
+   }
+}
