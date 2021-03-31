@@ -2,7 +2,7 @@
 
 OpenVRドライバ作成例である。比較的シンプルな構成を目指した。
 
-[オリジナルトラッカーを作ろう\~vol.1 OpenVRドライバ編\~](https://link)で作成したものである。
+[オリジナルトラッカーを作ろう\~vol.1 OpenVRドライバ編\~](https://kamibushiele.booth.pm/items/2860813)で作成したものである。
 
 ## 動作
 
